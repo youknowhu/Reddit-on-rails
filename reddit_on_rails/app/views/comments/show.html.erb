@@ -1,4 +1,10 @@
+<%= @comment.content %>
 
+<ul>
+  <% @comment.child_comments.each do |c| %>
+    <li><%= c.content %></li>
+  <% end %>
+</ul>
 
 <h1>New Comment</h1>
 <form action="<%= comments_url %>" method="POST">

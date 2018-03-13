@@ -3,9 +3,17 @@
   <%= one_sub.description %>
 <% end %>
 
-<% @post.comments.where(parent_comment_id: nil).each do |comment| %>
-  <%= link_to comment.content, comment_url(comment) %>
-<% end %>
+<ul>
+  <% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+    <li><%= link_to comment.content, comment_url(comment) %></li>
+
+    <ul>
+      <% comment.child_comments.each do |c| %>
+        <li><%= c.content %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>
 
 
 <h1>New Comment</h1>
