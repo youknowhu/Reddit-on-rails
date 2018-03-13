@@ -1,2 +1,13 @@
-<h1>Subs#new</h1>
-<p>Find me in app/views/subs/new.html.erb</p>
+<h1>New Sub</h1>
+<form action="<%=subs_url %>" method="POST">
+  <%= auth_token_helper %>
+<label>Title
+  <input type="text" name="sub[title]">
+</label>
+
+<label>Description
+  <textarea name="sub[description]"> </textarea>
+</label>
+
+<button> Create New Sub</button>
+</form>

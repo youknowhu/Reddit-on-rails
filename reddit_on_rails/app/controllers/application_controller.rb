@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  helper_method :logged_in?, :current_user, :auth_token_helper
+
   def current_user
     @current_user ||= User.find_by_session_token(session[:session_token])
   end
@@ -23,4 +25,7 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless logged_in?
   end
 
+  def auth_token_helper
+    "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'".html_safe
+  end
 end

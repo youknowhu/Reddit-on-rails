@@ -11,5 +11,4 @@ class Post < ApplicationRecord
   through: :post_subs,
   source: :sub
 
-
 end
