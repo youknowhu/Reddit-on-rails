@@ -1,0 +1,15 @@
+<h1>New Comment</h1>
+
+<form action="<%= comments_url %>" method="POST">
+  <%= auth_token_helper %>
+
+  <label>Content
+    <input
+    type="text"
+    value="<%= @comment.content %>"
+    name="comment[content]">
+  </label>
+
+  <button></button>
+
+</form>

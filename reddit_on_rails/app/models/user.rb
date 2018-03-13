@@ -10,6 +10,9 @@ class User < ApplicationRecord
   foreign_key: :author_id,
   class_name: :Post
 
+  has_many :comments,
+  foreign_key: :author_id,
+  class_name: :Comment
 
   before_validation :ensure_session_token
 
