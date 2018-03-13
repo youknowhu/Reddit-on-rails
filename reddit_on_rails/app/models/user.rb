@@ -2,6 +2,15 @@ class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_many :subs,
+  foreign_key: :moderator_id,
+  class_name: :Sub
+
+  has_many :posts,
+  foreign_key: :author_id,
+  class_name: :Post
+
+
   before_validation :ensure_session_token
 
   attr_reader :password
